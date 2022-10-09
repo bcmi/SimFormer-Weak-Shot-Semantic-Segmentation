@@ -21,7 +21,7 @@ Comprehensive experiments on the challenging COCO-Stuff-10K and ADE20K datasets 
 <div align="center">
   <img src='figs/overview.png' align="center" width=600>
 </div>
-
+<br>
 We refer to our learning scenario as weak-shot semantic segmentation, which focuses on further segmenting novel classes by virtue of cheaper image-level labels with the support of base classes having pixel-level masks. 
 Specifically, given a standard semantic segmentation dataset annotated only for base classes (the novel classes hide in the ignored regions), we assume that the image-level  labels are available for novel classes in each image, as shown in above figure (a).
 Our proposed solution is SimFormer, which performs dual similarity transfer upon MaskFormer as shown in above figure (b).
@@ -31,7 +31,7 @@ Our proposed solution is SimFormer, which performs dual similarity transfer upon
 <div align="center">
   <img src='figs/viz.png' align="center" width=600>
 </div>
-
+<br>
 Extensive experiments on the challenging COCO-Stuff-10K and ADE20K datasets have demonstrated the effectiveness of our proposed method.
 We provide in-depth qualitative visualization in above figure, from which we could directly inspect the single-label classification and binary segmentation sub-tasks of each proposal embedding. 
 Overall, the predicted classes are precise and confident, and the produced masks of proposal embeddings completely cover the corresponding semantic classes. 
