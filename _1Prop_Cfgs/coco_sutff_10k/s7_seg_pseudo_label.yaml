@@ -1,0 +1,20 @@
+_BASE_: Base-COCO-stuff-10k-prop.yaml
+
+GeneratePseudoLabel: True
+
+DATASETS:
+  TRAIN: ("coco_stuff_split7_train",)
+  TEST: ("coco_stuff_split7_train",)
+
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 171
+
+  MASK_FORMER:
+    NUM_OBJECT_QUERIES: 100
+    CLS_LOSS_TYPE: SoftmaxBCE # SoftmaxBCE / SigmoidBCE / RIB / MSM
+
+SOLVER:
+  CHECKPOINT_PERIOD: 999999
+
+OUTPUT_PREFIX: GeneratePseudoLabelS7

@@ -1,0 +1,31 @@
+_BASE_: Base-Prop.yaml
+
+GeneratePseudoLabel: True
+
+DATASETS:
+  TRAIN: ("ADE_split4_train",)
+  TEST: ("ADE_split4_train",)
+
+VIZ:
+  EVAL_HEAD: 0
+
+TEST:
+  AUG:
+    ENABLED: True
+    #    MIN_SIZES: [320, 480, 640, 800, 960, 1120]
+    MIN_SIZES: [ 320, 480, 640, 800, 960, 1120]
+    MAX_SIZE: 4480
+    FLIP: True
+
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 150
+
+  MASK_FORMER:
+    NUM_OBJECT_QUERIES: 100
+    CLS_LOSS_TYPE: SoftmaxBCE # SoftmaxBCE / SigmoidBCE / RIB / MSM
+
+SOLVER:
+  CHECKPOINT_PERIOD: 999999
+
+OUTPUT_PREFIX: GenerateADEPseudoLabelS4

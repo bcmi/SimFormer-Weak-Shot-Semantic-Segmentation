@@ -1,0 +1,16 @@
+_BASE_: s3_seg.yaml
+
+INPUT:
+  DATASET_MAPPER_NAME: pair_mapper
+
+CROSS_IMG_SIM:
+  PAIR_TYPE: Deconf0.01
+
+  BASE_LOSS: 1.0
+
+  DISTILL_LOSS: 0.5
+  DISTILL_TO: NovelScore # [NovelScore, FullScore, FullLogit, FullLogitC]
+  DISTILL_FUNC: cce # [ce, cce, b0.5]
+
+SOLVER:
+  IMS_PER_BATCH: 4

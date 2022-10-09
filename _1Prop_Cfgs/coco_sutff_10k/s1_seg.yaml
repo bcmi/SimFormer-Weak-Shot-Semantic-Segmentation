@@ -1,0 +1,37 @@
+_BASE_: Base-COCO-stuff-10k-prop.yaml
+
+DATASETS:
+  TRAIN: ("coco_stuff_split1_train",)
+#  TEST: ("coco_stuff_split1_train","coco_stuff_split1_val")
+  TEST: ("coco_stuff_split1_val",)
+
+ASM:
+  HasMaskCls: 1.
+  NoMaskCls: 1.
+  HasMaskMask: 1.
+  NoMaskMask: 0.
+
+LOSS:
+  AssignCls: 1.
+
+  AssignMaskDICE: 1.
+  AssignMaskMASK: 20.
+
+  CompSupNovel: 0.15
+
+EVAL:
+  # bg_base_novel
+  BIAS: ( "1_1_1", )
+
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 171
+
+  MASK_FORMER:
+    NUM_OBJECT_QUERIES: 100
+    CLS_LOSS_TYPE: SoftmaxBCE
+
+SOLVER:
+  CHECKPOINT_PERIOD: 999999
+
+OUTPUT_PREFIX: COCO_S1

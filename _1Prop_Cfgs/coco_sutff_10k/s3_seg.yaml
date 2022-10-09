@@ -1,0 +1,8 @@
+_BASE_: s1_seg.yaml
+
+DATASETS:
+  TRAIN: ("coco_stuff_split3_train",)
+#  TEST: ("coco_stuff_split3_train","coco_stuff_split3_val")
+  TEST: ("coco_stuff_split3_val",)
+
+OUTPUT_PREFIX: COCO_S3

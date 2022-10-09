@@ -1,0 +1,25 @@
+_BASE_: s1_seg.yaml
+
+INPUT:
+  DATASET_MAPPER_NAME: pair_mapper
+
+CROSS_IMG_SIM:
+  PAIR_TYPE: Deconf0.01
+
+  BASE_LOSS: 1.0
+
+  DISTILL_LOSS: 0.
+  DISTILL_TO: NovelScore
+  DISTILL_FUNC: ce # [ce, cce, b0.5]
+
+  TEACH_DETACH: False
+  BASE_DETACH: False
+  LayerNum: 3
+
+SOLVER:
+  IMS_PER_BATCH: 4
+  MAX_ITER: 5000
+  BASE_LR: 0.00001
+
+MODEL:
+  WEIGHTS: datasets/SimFormer_S1.pth

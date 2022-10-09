@@ -1,0 +1,34 @@
+_BASE_: Base-Prop.yaml
+
+DATASETS:
+  TRAIN: ("ADE_split1_train",)
+#  TEST: ("ADE_split1_train","ADE_split1_val",)
+  TEST: ("ADE_split1_val",)
+
+ASM:
+  HasMaskCls: 1.
+  NoMaskCls: 1.
+  HasMaskMask: 1.
+  NoMaskMask: 0.
+
+LOSS:
+  AssignCls: 1.
+
+  AssignMaskDICE: 1.
+  AssignMaskMASK: 20.
+
+
+  CompSupNovel: 0.2
+
+EVAL:
+  # bg_base_novel
+  BIAS: ( "1_1_1", )
+
+MODEL:
+  MASK_FORMER:
+    CLS_LOSS_TYPE: SoftmaxBCE # SoftmaxBCE / SigmoidBCE / RIB / MSM
+
+SOLVER:
+  CHECKPOINT_PERIOD: 999999
+
+OUTPUT_PREFIX: ADE_S1

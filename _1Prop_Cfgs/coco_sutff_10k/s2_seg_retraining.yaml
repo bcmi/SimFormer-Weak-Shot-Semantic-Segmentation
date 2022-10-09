@@ -1,0 +1,48 @@
+_BASE_: Base-COCO-stuff-10k-prop.yaml
+
+DATASETS:
+  TRAIN: ("coco_stuff_split2_train",)
+#  TEST: ("coco_stuff_split2_train",)
+#  TEST: ("coco_stuff_split2_train","coco_stuff_split2_val",)
+  TEST: ("coco_stuff_split2_val",)
+
+NOVEL_HAS_MASK: True
+PSEUDO_LABEL_PATH: pseudo_ours_COCO_S2 # [pseudo_ours_COCO_S1, pseudo_retab_COCO_S1]
+
+ASM:
+  HasMaskCls: 1.
+  NoMaskCls: 1.
+  HasMaskMask: 1.
+  NoMaskMask: 0.
+
+LOSS:
+  AssignCls: 1.
+  MILCls: 0.
+
+  AssignMaskDICE: 1.
+  AssignMaskMASK: 20.
+
+  PoolMask: 0.0
+
+  CompSupNovel: 0.0
+  EntroRegNovel: 0.0
+
+  PER_PROP_ENTROPY: 0.
+  CAT_MASK_ENTROPY: 0.
+
+EVAL:
+  # bg_base_novel
+  BIAS: ( "1_1_1", )
+
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 171
+
+  MASK_FORMER:
+    NUM_OBJECT_QUERIES: 100
+    CLS_LOSS_TYPE: SoftmaxBCE # SoftmaxBCE / SigmoidBCE / RIB / MSM
+
+SOLVER:
+  CHECKPOINT_PERIOD: 999999
+
+OUTPUT_PREFIX: COCO_S2_RETRAINING

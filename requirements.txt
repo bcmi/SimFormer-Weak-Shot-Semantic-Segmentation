@@ -1,0 +1,9 @@
+cython
+scipy
+shapely
+timm
+h5py
+opencv-python
+tqdm
+pandas
+terminaltables

@@ -1,0 +1,29 @@
+_BASE_: Base-COCO-stuff-10k-prop.yaml
+
+GeneratePseudoLabel: True
+
+DATASETS:
+  TRAIN: ("coco_stuff_split1_train",)
+  TEST: ("coco_stuff_split1_train",)
+#  TEST: ("coco_stuff_split1_val",)
+
+MODEL:
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 171
+
+  MASK_FORMER:
+    NUM_OBJECT_QUERIES: 100
+    CLS_LOSS_TYPE: SoftmaxBCE # SoftmaxBCE / SigmoidBCE / RIB / MSM
+
+SOLVER:
+  CHECKPOINT_PERIOD: 999999
+
+TEST:
+  AUG:
+    ENABLED: False
+#    MIN_SIZES: [320, 480, 640, 800, 960, 1120]
+    MIN_SIZES: [ 320, 480, 640, 800, 960]
+    MAX_SIZE: 4480
+    FLIP: True
+
+OUTPUT_PREFIX: GeneratePseudoLabelS1
